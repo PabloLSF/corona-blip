@@ -5,12 +5,9 @@ const request = require('request')
 exports.getEstado = (req, res) => {
     const data = `${req.body.date}`
     const estado = regex.estadoFunction(`${req.body.local}`)
-    console.log(data)
-    console.log(estado)
     const urlEstado = `https://brasil.io/api/dataset/covid19/obito_cartorio/data/?state=${estado}&date=${data}`
-    console.log(urlEstado)
     axios.get(urlEstado).then((response) => {
-        console.log(response.status)
+        res.status(response.status).send(response.data.results[0])
     }).catch((error) => {
         console.log(error)
     })
@@ -24,10 +21,7 @@ exports.renderEstado = (req, res) => {
         "json": true
     }
     request(options, (error, response) => {
-        let payload = response.body["results"].filter((e) => {
-            console.log("AQUI: " + e.date == req.param.data && e.state == req.param.estado)
-            return e.date == req.param.data && e.state == req.param.estado
-        });
+        let payload = response.body["results"]
         res.status(response.statusCode).send(payload)
     })
 }

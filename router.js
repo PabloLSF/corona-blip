@@ -2,9 +2,9 @@ const express = require("express")
 const router = express.Router()
 const controller = require("./controllers/controller")
 
-router.get("/estado", controller.renderEstado)
 router.post("/estado", controller.getEstado)
-router.get("/cidade", controller.renderCidade)
+router.get("/estado", controller.renderEstado)
 router.post("/cidade", controller.getCidade)
+router.get("/cidade", controller.renderCidade)
 
 module.exports = router
