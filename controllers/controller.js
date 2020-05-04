@@ -2,9 +2,14 @@ const axios = require('axios')
 var regex = require('./regex')
 const request = require('request')
 
+exports.getScript = (req, res) => {
+    const local = regex.estadoFunction(`${req.body.local}`)
+    res.send(local)
+}
+ 
 exports.getEstado = (req, res) => {
     const data = `${req.body.date}`
-    const estado = regex.estadoFunction(`${req.body.local}`)
+    const estado = `${req.body.local}`
     const urlEstado = `https://brasil.io/api/dataset/covid19/obito_cartorio/data/?state=${estado}&date=${data}`
     axios.get(urlEstado).then((response) => {
         res.status(response.status).send(response.data.results[0])
