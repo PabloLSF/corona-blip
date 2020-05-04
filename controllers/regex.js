@@ -189,8 +189,6 @@ module.exports = {
                             res = sigla;
                         }
 
-
-
                     }
                     if ((resp.toLowerCase().indexOf(estados[i].toLowerCase()) == 0)) {
                         next = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 3);
@@ -291,9 +289,6 @@ module.exports = {
                 }
             }
         }
-
-
-
 
         if (res == '') {
             return 0;
