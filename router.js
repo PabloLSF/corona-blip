@@ -3,7 +3,7 @@ const router = express.Router()
 const controller = require("./controllers/controller")
 
 router.post("/script", controller.getScript)
-router.get("/brasil", controller.getBrasil)
+router.get("/brasil", controller.renderBrasil)
 router.post("/estado", controller.getEstado)
 router.post("/cidade", controller.getCidade)
 
