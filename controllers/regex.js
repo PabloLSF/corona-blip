@@ -1,5 +1,4 @@
 module.exports = {
-    
     estadoFunction: function(str) {
         removeAcento = (text) => {       
             text = text.toLowerCase();                                                         
