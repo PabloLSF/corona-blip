@@ -6,16 +6,6 @@ exports.getScript = (req, res) => {
     res.send(local)
 }
 
-exports.getBrasil = (req, res) => {
-    const urlBrasil = `https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search`
-    axios.get(urlBrasil).then((response) => {
-        console.log("RESPOSNSE: ", response.data.rows)
-        res.status(response.status).send(response)
-    }).catch((error) => {
-        console.log(error)
-    })
-}
- 
 exports.getEstado = (req, res) => {
     const data = `${req.body.date}`
     const estado = `${req.body.local}`
