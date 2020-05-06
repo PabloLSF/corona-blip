@@ -1,5 +1,5 @@
 module.exports = {
-    estadoFunction: function(str) {
+    estadoFunction: async function(str) {
         removeAcento = (text) => {       
             text = text.toLowerCase();                                                         
             text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
@@ -11,7 +11,7 @@ module.exports = {
             return text;                 
         }
         var res = '';
-        resp=removeAcento(str);
+        resp = removeAcento(str);
         var pais = ['BR',
             'Brasil'];
         var estados = [' AC', 'Acre', 'AL', 'Alagoas', 'AM', 'Amazonas', 'AP', 'Amapá', 'BA', 'Bahia',
@@ -280,9 +280,9 @@ module.exports = {
             }
         }
         if (res == '') {
-            return 0;
+            return 0
         } else {
-            return res;//Return value will be saved as "Return value variable" field name
+            return res
         }
     }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-    convert: function(rows) {
+    convert: async function(rows) {
         var brasil;
         for(var i = 0; i < rows.length; i++) {
             
