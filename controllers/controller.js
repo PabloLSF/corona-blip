@@ -6,7 +6,7 @@ const request = require('request')
 exports.getScript = (req, res) => {
     const local = regex.estadoFunction(`${req.body.local}`)
     if(local == 0)
-        res.send("Outro país")
+        res.send("outro país")
     else
         res.send(local)
 }
@@ -26,9 +26,8 @@ exports.renderBrasil = (req, res) => {
 }
  
 exports.getEstado = (req, res) => {
-    const data = `${req.body.date}`
     const estado = `${req.body.local}`
-    const urlEstado = `https://brasil.io/api/dataset/covid19/obito_cartorio/data/?state=${estado}&date=${data}`
+    const urlEstado = `https://brasil.io/api/dataset/covid19/obito_cartorio/data/?state=${estado}`
     axios.get(urlEstado).then((response) => {
         res.status(response.status).send(response.data.results[0])
     }).catch((error) => {
@@ -37,9 +36,8 @@ exports.getEstado = (req, res) => {
 }
 
 exports.getCidade = (req, res) => {
-    const data = `${req.body.date}`
     const cidade = regex.estadoFunction(`${req.body.local}`)
-    const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}&date=${data}`
+    const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}`
     axios.get(urlCidade).then((response) => {
         res.status(response.status).send(response.data.results[0])
     }).catch((error) => {
