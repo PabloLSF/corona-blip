@@ -1,5 +1,6 @@
 const axios = require('axios')
 var regex = require('./regex')
+var uf = require('./uf')
 var converterJson = require('./converterJson')
 const request = require('request')
 
@@ -33,6 +34,14 @@ exports.getEstado = async(req, res) => {
     }).catch((error) => {
         console.log(error)
     })
+}
+
+exports.getUf = async(req, res) => {
+    const estado = await uf.ufFunction(`${req.body.uf}`)
+    if(estado == 0)
+        res.send("estado não localizado")
+    else
+        res.send(estado)
 }
 
 exports.getCidade = async(req, res) => {
