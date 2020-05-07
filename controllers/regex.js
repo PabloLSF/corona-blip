@@ -11,10 +11,10 @@ module.exports = {
             return text;
         }
         var res = [4];
-        res[0] ='';
-        res[1] ='';
-        res[2] ='';
-        res[3] ='';
+        res ='';
+        res ='';
+        res ='';
+        res ='';
         var sub = '';
         var int = '';
         var next = '';
@@ -23,6 +23,7 @@ module.exports = {
         resp = removeAcento(str);
         var pais = ['BR',
             'Brasil'];
+
         var estados = [' AC', 'Acre', 'AL', 'Alagoas', 'AM', 'Amazonas', 'AP', 'Amapá', 'BA', 'Bahia',
             'CE', 'Ceará', 'DF', 'Distrito Federal', 'ES', 'Espírito Santo', 'GO', 'Goiás', 'MA', 'Maranhão', 'MG', 'Minas Gerais',
             'MS', 'Mato Grosso do Sul', 'MT', 'Mato Grosso', 'PA', 'Pará', 'PB', 'Paraíba', 'PE', 'Pernambuco', 'PI', 'Piauí',
@@ -57,35 +58,16 @@ module.exports = {
                 'Aracaju', 'Amparo de São Francisco', 'Aquidabã', 'Arauá', 'Areia Branca', 'Barra dos Coqueiros', 'Boquim', 'Brejo Grande', 'Campo do Brito', 'Canhoba', 'Canindé de São Francisco', 'Capela', 'Carira', 'Carmópolis', 'Cedro de São João', 'Cristinápolis', 'Cumbe', 'Divina Pastora', 'Estância', 'Feira Nova', 'Frei Paulo', 'Gararu', 'General Maynard', 'Gracho Cardoso', 'Ilha das Flores', 'Indiaroba', 'Itabaiana', 'Itabaianinha', 'Itabi', 'Itaporanga d\'Ajuda', 'Japaratuba', 'Japoatã', 'Lagarto', 'Laranjeiras', 'Macambira', 'Malhada dos Bois', 'Malhador', 'Maruim', 'Moita Bonita', 'Monte Alegre de Sergipe', 'Muribeca', 'Neópolis', 'Nossa Senhora Aparecida', 'Nossa Senhora da Glória', 'Nossa Senhora das Dores', 'Nossa Senhora de Lourdes', 'Nossa Senhora do Socorro', 'Pacatuba', 'Pedra Mole', 'Pedrinhas', 'Pinhão', 'Pirambu', 'Poço Redondo', 'Poço Verde', 'Porto da Folha', 'Propriá', 'Riachão do Dantas', 'Riachuelo', 'Ribeirópolis', 'Rosário do Catete', 'Salgado', 'Santa Luzia do Itanhy', 'Santa Rosa de Lima', 'Santana do São Francisco', 'Santo Amaro das Brotas', 'São Cristóvão', 'São Domingos', 'São Francisco', 'São Miguel do Aleixo', 'Simão Dias', 'Siriri', 'Telha', 'Tobias Barreto', 'Tomar do Geru', 'Umbaúba',
                 'Palmas', 'Abreulândia', 'Aguiarnópolis', 'Aliança do Tocantins', 'Almas', 'Alvorada', 'Ananás', 'Angico', 'Aparecida do Rio Negro', 'Aragominas', 'Araguacema', 'Araguaçu', 'Araguaína', 'Araguanã', 'Araguatins', 'Arapoema', 'Arraias', 'Augustinópolis', 'Aurora do Tocantins', 'Axixá do Tocantins', 'Babaçulândia', 'Bandeirantes do Tocantins', 'Barra do Ouro', 'Barrolândia', 'Bernardo Sayão', 'Bom Jesus do Tocantins', 'Brasilândia do Tocantins', 'Brejinho de Nazaré', 'Buriti do Tocantins', 'Cachoeirinha', 'Campos Lindos', 'Cariri do Tocantins', 'Carmolândia', 'Carrasco Bonito', 'Caseara', 'Centenário', 'Chapada da Natividade', 'Chapada de Areia', 'Colinas do Tocantins', 'Colméia', 'Combinado', 'Conceição do Tocantins', 'Couto de Magalhães', 'Cristalândia', 'Crixás do Tocantins', 'Darcinópolis', 'Dianópolis', 'Divinópolis do Tocantins', 'Dois Irmãos do Tocantins', 'Dueré', 'Esperantina', 'Fátima', 'Figueirópolis', 'Filadélfia', 'Formoso do Araguaia', 'Fortaleza do Tabocão', 'Goianorte', 'Goiatins', 'Guaraí', 'Gurupi', 'Ipueiras', 'Itacajá', 'Itaguatins', 'Itapiratins', 'Itaporã do Tocantins', 'Jaú do Tocantins', 'Juarina', 'Lagoa da Confusão', 'Lagoa do Tocantins', 'Lajeado', 'Lavandeira', 'Lizarda', 'Luzinópolis', 'Marianópolis do Tocantins', 'Mateiros', 'Maurilândia do Tocantins', 'Miracema do Tocantins', 'Miranorte', 'Monte do Carmo', 'Monte Santo do Tocantins', 'Muricilândia', 'Natividade', 'Nazaré', 'Nova Olinda', 'Nova Rosalândia', 'Novo Acordo', 'Novo Alegre', 'Novo Jardim', 'Oliveira de Fátima', 'Palmeirante', 'Palmeiras do Tocantins', 'Palmeirópolis', 'Paraíso do Tocantins', 'Paranã', 'Pau d\'Arco', 'Pedro Afonso', 'Peixe', 'Pequizeiro', 'Pindorama do Tocantins', 'Piraquê', 'Pium', 'Ponte Alta do Bom Jesus', 'Ponte Alta do Tocantins', 'Porto Alegre do Tocantins', 'Porto Nacional', 'Praia Norte', 'Presidente Kennedy', 'Pugmil', 'Recursolândia', 'Riachinho', 'Rio da Conceição', 'Rio dos Bois', 'Rio Sono', 'Sampaio', 'Sandolândia', 'Santa Fé do Araguaia', 'Santa Maria do Tocantins', 'Santa Rita do Tocantins', 'Santa Rosa do Tocantins', 'Santa Tereza do Tocantins', 'Santa Terezinha do Tocantins', 'São Bento do Tocantins', 'São Félix do Tocantins', 'São Miguel do Tocantins', 'São Salvador do Tocantins', 'São Sebastião do Tocantins', 'São Valério da Natividade', 'Silvanópolis', 'Sítio Novo do Tocantins', 'Sucupira', 'Taguatinga', 'Taipas do Tocantins', 'Talismã', 'Tocantínia', 'Tocantinópolis', 'Tupirama', 'Tupiratins', 'Wanderlândia', 'Xambioá'
             ];
-        for (var i = 0; i < cidades.length; i++) {
-            if (resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) != -1) {
-            
-                int = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())));
-                next = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 1);
-            var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
-                if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
-                    if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
-                    }else{
-                    aux[j] = cidades[i];
-                    j++;
-                    }
-                }
-            }
-            res[3]=j;
-        }
-            for(var i = 1; i<j;i++){
-                if(aux[i-1].length<aux[i].length){
-                    res[0]=aux[i];
-                }else{
-                    res[0]=aux[i-1]; 
-                }
-            }
-        console.log(aux)
+
+        
+    
+        
+
         for (var i = 0; i < pais.length; i++) {
             if (resp.toLowerCase().indexOf(pais[i].toLowerCase()) != -1) {
 
                 if (resp.length == 2) {
-                    res[2] = pais[i];
+                    res = pais[i];
                 } else {
                     if ((resp.toLowerCase().indexOf(pais[i].toLowerCase()) - 1 != 0)) {
 
@@ -94,11 +76,11 @@ module.exports = {
 
                         if (pais[i].length == 2) {
                             if (int == ' ' && (next == ' ' || next == '')) {
-                                res[2] = pais[i];
+                                res = pais[i];
 
                             }
                         } else {
-                            res[2] = 'BR';
+                            res = 'BR';
                         }
 
                     }
@@ -107,11 +89,11 @@ module.exports = {
 
                         if (pais[i].length == 2) {
                             if (next == ' ') {
-                                res[2] = pais[i];
+                                res = pais[i];
 
                             }
                         } else {
-                            res[2] = 'BR';
+                            res = 'BR';
                         }
                     }
                 }
@@ -121,7 +103,7 @@ module.exports = {
             if (resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) != -1) {
 
                 if (resp.length == 2) {
-                    res[1] = estados[i];
+                    res = estados[i];
                 } else {
                     if ((resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) - 1 != 0)) {
 
@@ -130,7 +112,7 @@ module.exports = {
 
                         if (estados[i].length == 2) {
                             if (int == ' ' && (next == ' ' || next == '')) {
-                                res[1] = estados[i];
+                                res = estados[i];
 
                             }
                         } else {
@@ -222,7 +204,7 @@ module.exports = {
                                 if (estados[i] == 'Tocantins') {
                                     sigla = 'TO';
                                 }
-                                res[1] = sigla;
+                                res = sigla;
                             }
                         }
                     }
@@ -231,7 +213,7 @@ module.exports = {
 
                         if (estados[i].length == 2) {
                             if (next == ' ' || next == '') {
-                                res[1] = estados[i];
+                                res = estados[i];
 
                             }
                         } else {
@@ -320,14 +302,44 @@ module.exports = {
                                 if (estados[i] == 'Tocantins') {
                                     sigla = 'TO';
                                 }
-                                res[1] = sigla;
+
+
+                                res = sigla;
                             }
                         }
                     }
                 }
             }
         }
-        if (res[0] == ''&&res[1] == ''&&res[2] == '') {
+        for (var i = 0; i < cidades.length; i++) {
+            if (resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) != -1) {
+            
+                int = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())));
+                next = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 1);
+            var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
+                if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
+                    if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
+                        
+                    }else{
+                    
+                    aux[j] = cidades[i];
+                    j++;
+                    }
+                }
+            }
+        }
+        if(j==1){
+            res=aux[0];
+        }
+            for(var i = 1; i<j;i++){
+                if(aux[i-1].length<aux[i].length){
+                    res=aux[i];
+                    console.log(res) 
+                }else{
+                    res=aux[i-1]; 
+                }
+            }
+        if (res == '') {
             return 0;
         } else {
             return res;
