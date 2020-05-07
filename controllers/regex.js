@@ -10,10 +10,11 @@ module.exports = {
             text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
             return text;
         }
-        var res = [3];
+        var res = [4];
         res[0] ='';
         res[1] ='';
         res[2] ='';
+        res[3] ='';
         var sub = '';
         var int = '';
         var next = '';
@@ -64,16 +65,22 @@ module.exports = {
             var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
                 if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
                     if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
-                        
                     }else{
-                    
                     aux[j] = cidades[i];
                     j++;
-                    res[0] = aux[0];
                     }
                 }
             }
+            res[3]=j;
         }
+            for(var i = 1; i<j;i++){
+                if(aux[i-1].length<aux[i].length){
+                    res[0]=aux[i];
+                }else{
+                    res[0]=aux[i-1]; 
+                }
+            }
+        console.log(aux)
         for (var i = 0; i < pais.length; i++) {
             if (resp.toLowerCase().indexOf(pais[i].toLowerCase()) != -1) {
 
@@ -88,10 +95,12 @@ module.exports = {
                         if (pais[i].length == 2) {
                             if (int == ' ' && (next == ' ' || next == '')) {
                                 res[2] = pais[i];
+
                             }
                         } else {
                             res[2] = 'BR';
                         }
+
                     }
                     if ((resp.toLowerCase().indexOf(pais[i].toLowerCase()) == 0)) {
                         next = resp.substring(resp.toLowerCase().indexOf(pais[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(pais[i].toLowerCase()) + 3);
