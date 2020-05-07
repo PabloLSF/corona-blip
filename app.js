@@ -1,3 +1,4 @@
+var PORT = process.env.PORT || 5000
 const path = require("path")
 const express = require("express")
 const app = express()
@@ -8,6 +9,6 @@ app.use(express.json())
 
 app.use("/", router)
 
-app.listen(8000, () => {
-  console.log("The server is now running on Port 8000")
+app.listen(PORT, () => {
+  console.log("The server is now running on Port PORT")
 })
