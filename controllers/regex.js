@@ -1,20 +1,27 @@
 module.exports = {
     estadoFunction: async function(str) {
         removeAcento = (text) => {
-            text = text.toLowerCase();                                                         
-            text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
-            text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
-            text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
-            text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
-            text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
-            text = text.replace(new RegExp('[Ç]','gi'), 'c');
-            return text;                 
+            text = text.toLowerCase();
+            text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+            text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+            text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+            text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+            text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+            text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+            return text;
         }
-        var res = '';
+        var res = [3];
+        res[0] ='';
+        res[1] ='';
+        res[2] ='';
+        var sub = '';
+        var int = '';
+        var next = '';
+        var aux = [];
+        var j = 0;
         resp = removeAcento(str);
         var pais = ['BR',
             'Brasil'];
-
         var estados = [' AC', 'Acre', 'AL', 'Alagoas', 'AM', 'Amazonas', 'AP', 'Amapá', 'BA', 'Bahia',
             'CE', 'Ceará', 'DF', 'Distrito Federal', 'ES', 'Espírito Santo', 'GO', 'Goiás', 'MA', 'Maranhão', 'MG', 'Minas Gerais',
             'MS', 'Mato Grosso do Sul', 'MT', 'Mato Grosso', 'PA', 'Pará', 'PB', 'Paraíba', 'PE', 'Pernambuco', 'PI', 'Piauí',
@@ -49,22 +56,29 @@ module.exports = {
                 'Aracaju', 'Amparo de São Francisco', 'Aquidabã', 'Arauá', 'Areia Branca', 'Barra dos Coqueiros', 'Boquim', 'Brejo Grande', 'Campo do Brito', 'Canhoba', 'Canindé de São Francisco', 'Capela', 'Carira', 'Carmópolis', 'Cedro de São João', 'Cristinápolis', 'Cumbe', 'Divina Pastora', 'Estância', 'Feira Nova', 'Frei Paulo', 'Gararu', 'General Maynard', 'Gracho Cardoso', 'Ilha das Flores', 'Indiaroba', 'Itabaiana', 'Itabaianinha', 'Itabi', 'Itaporanga d\'Ajuda', 'Japaratuba', 'Japoatã', 'Lagarto', 'Laranjeiras', 'Macambira', 'Malhada dos Bois', 'Malhador', 'Maruim', 'Moita Bonita', 'Monte Alegre de Sergipe', 'Muribeca', 'Neópolis', 'Nossa Senhora Aparecida', 'Nossa Senhora da Glória', 'Nossa Senhora das Dores', 'Nossa Senhora de Lourdes', 'Nossa Senhora do Socorro', 'Pacatuba', 'Pedra Mole', 'Pedrinhas', 'Pinhão', 'Pirambu', 'Poço Redondo', 'Poço Verde', 'Porto da Folha', 'Propriá', 'Riachão do Dantas', 'Riachuelo', 'Ribeirópolis', 'Rosário do Catete', 'Salgado', 'Santa Luzia do Itanhy', 'Santa Rosa de Lima', 'Santana do São Francisco', 'Santo Amaro das Brotas', 'São Cristóvão', 'São Domingos', 'São Francisco', 'São Miguel do Aleixo', 'Simão Dias', 'Siriri', 'Telha', 'Tobias Barreto', 'Tomar do Geru', 'Umbaúba',
                 'Palmas', 'Abreulândia', 'Aguiarnópolis', 'Aliança do Tocantins', 'Almas', 'Alvorada', 'Ananás', 'Angico', 'Aparecida do Rio Negro', 'Aragominas', 'Araguacema', 'Araguaçu', 'Araguaína', 'Araguanã', 'Araguatins', 'Arapoema', 'Arraias', 'Augustinópolis', 'Aurora do Tocantins', 'Axixá do Tocantins', 'Babaçulândia', 'Bandeirantes do Tocantins', 'Barra do Ouro', 'Barrolândia', 'Bernardo Sayão', 'Bom Jesus do Tocantins', 'Brasilândia do Tocantins', 'Brejinho de Nazaré', 'Buriti do Tocantins', 'Cachoeirinha', 'Campos Lindos', 'Cariri do Tocantins', 'Carmolândia', 'Carrasco Bonito', 'Caseara', 'Centenário', 'Chapada da Natividade', 'Chapada de Areia', 'Colinas do Tocantins', 'Colméia', 'Combinado', 'Conceição do Tocantins', 'Couto de Magalhães', 'Cristalândia', 'Crixás do Tocantins', 'Darcinópolis', 'Dianópolis', 'Divinópolis do Tocantins', 'Dois Irmãos do Tocantins', 'Dueré', 'Esperantina', 'Fátima', 'Figueirópolis', 'Filadélfia', 'Formoso do Araguaia', 'Fortaleza do Tabocão', 'Goianorte', 'Goiatins', 'Guaraí', 'Gurupi', 'Ipueiras', 'Itacajá', 'Itaguatins', 'Itapiratins', 'Itaporã do Tocantins', 'Jaú do Tocantins', 'Juarina', 'Lagoa da Confusão', 'Lagoa do Tocantins', 'Lajeado', 'Lavandeira', 'Lizarda', 'Luzinópolis', 'Marianópolis do Tocantins', 'Mateiros', 'Maurilândia do Tocantins', 'Miracema do Tocantins', 'Miranorte', 'Monte do Carmo', 'Monte Santo do Tocantins', 'Muricilândia', 'Natividade', 'Nazaré', 'Nova Olinda', 'Nova Rosalândia', 'Novo Acordo', 'Novo Alegre', 'Novo Jardim', 'Oliveira de Fátima', 'Palmeirante', 'Palmeiras do Tocantins', 'Palmeirópolis', 'Paraíso do Tocantins', 'Paranã', 'Pau d\'Arco', 'Pedro Afonso', 'Peixe', 'Pequizeiro', 'Pindorama do Tocantins', 'Piraquê', 'Pium', 'Ponte Alta do Bom Jesus', 'Ponte Alta do Tocantins', 'Porto Alegre do Tocantins', 'Porto Nacional', 'Praia Norte', 'Presidente Kennedy', 'Pugmil', 'Recursolândia', 'Riachinho', 'Rio da Conceição', 'Rio dos Bois', 'Rio Sono', 'Sampaio', 'Sandolândia', 'Santa Fé do Araguaia', 'Santa Maria do Tocantins', 'Santa Rita do Tocantins', 'Santa Rosa do Tocantins', 'Santa Tereza do Tocantins', 'Santa Terezinha do Tocantins', 'São Bento do Tocantins', 'São Félix do Tocantins', 'São Miguel do Tocantins', 'São Salvador do Tocantins', 'São Sebastião do Tocantins', 'São Valério da Natividade', 'Silvanópolis', 'Sítio Novo do Tocantins', 'Sucupira', 'Taguatinga', 'Taipas do Tocantins', 'Talismã', 'Tocantínia', 'Tocantinópolis', 'Tupirama', 'Tupiratins', 'Wanderlândia', 'Xambioá'
             ];
-
-        var sub = '';
-        var int = '';
-        var next = '';
-
         for (var i = 0; i < cidades.length; i++) {
             if (resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) != -1) {
-                res = cidades[i];
+            
+                int = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())));
+                next = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 1);
+            var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
+                if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
+                    if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
+                        
+                    }else{
+                    
+                    aux[j] = cidades[i];
+                    j++;
+                    res[0] = aux[0];
+                    }
+                }
             }
         }
-
         for (var i = 0; i < pais.length; i++) {
             if (resp.toLowerCase().indexOf(pais[i].toLowerCase()) != -1) {
 
                 if (resp.length == 2) {
-                    res = pais[i];
+                    res[2] = pais[i];
                 } else {
                     if ((resp.toLowerCase().indexOf(pais[i].toLowerCase()) - 1 != 0)) {
 
@@ -73,24 +87,22 @@ module.exports = {
 
                         if (pais[i].length == 2) {
                             if (int == ' ' && (next == ' ' || next == '')) {
-                                res = pais[i];
-
+                                res[2] = pais[i];
                             }
                         } else {
-                            res = pais[i];
+                            res[2] = 'BR';
                         }
-
                     }
                     if ((resp.toLowerCase().indexOf(pais[i].toLowerCase()) == 0)) {
                         next = resp.substring(resp.toLowerCase().indexOf(pais[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(pais[i].toLowerCase()) + 3);
 
                         if (pais[i].length == 2) {
                             if (next == ' ') {
-                                res = pais[i];
+                                res[2] = pais[i];
 
                             }
                         } else {
-                            res = pais[i];
+                            res[2] = 'BR';
                         }
                     }
                 }
@@ -100,216 +112,216 @@ module.exports = {
             if (resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) != -1) {
 
                 if (resp.length == 2) {
-                    res = estados[i];
+                    res[1] = estados[i];
                 } else {
                     if ((resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) - 1 != 0)) {
 
-                        int = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) - 1, resp.toLowerCase().indexOf(estados[i].toLowerCase()));
-                        next = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 3);
-                        
+                        int = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())));
+                        next = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + 2, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + 3);
+
                         if (estados[i].length == 2) {
                             if (int == ' ' && (next == ' ' || next == '')) {
-                                res = estados[i];
+                                res[1] = estados[i];
 
                             }
                         } else {
-                            int = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) - 1, resp.toLowerCase().indexOf(estados[i].toLowerCase()));
-                            next = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 3);
-                                        
-                                if (int == ' ' && (next == ' ' || next == '')) {
-                            sigla = '';
-                            if (estados[i] == 'Acre') {
-                                sigla = 'AC';
+
+                            int = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())));
+                            next = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + +estados[i].length, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + +estados[i].length + 1);
+
+                            if (int == ' ' && (next == ' ' || next == '')) {
+                                sigla = '';
+                            
+                                if (estados[i] == 'Acre') {
+                                    sigla = 'AC';
+                                }
+                                if (estados[i] == 'Alagoas') {
+                                    sigla = 'AL';
+                                }
+                                if (estados[i] == 'Amazonas') {
+                                    sigla = 'AM';
+                                }
+                                if (estados[i] == 'Amapá') {
+                                    sigla = 'AP';
+                                }
+                                if (estados[i] == 'Bahia') {
+                                    sigla = 'BA';
+                                }
+                                if (estados[i] == 'Ceará') {
+                                    sigla = 'CE';
+                                }
+                                if (estados[i] == 'Distrito Federal') {
+                                    sigla = 'DF';
+                                }
+                                if (estados[i] == 'Espírito Santo') {
+                                    sigla = 'ES';
+                                }
+                                if (estados[i] == 'Goiás') {
+                                    sigla = 'GO';
+                                }
+                                if (estados[i] == 'Maranhão') {
+                                    sigla = 'MA';
+                                }
+                                if (estados[i] == 'Minas Gerais') {
+                                    sigla = 'MG';
+                                }
+                                if (estados[i] == 'Mato Grosso do Sul') {
+                                    sigla = 'MS';
+                                }
+                                if (estados[i] == 'Mato Grosso') {
+                                    sigla = 'MT';
+                                }
+                                if (estados[i] == 'Pará') {
+                                    sigla = 'PA';
+                                }
+                                if (estados[i] == 'Paraíba') {
+                                    sigla = 'PB';
+                                }
+                                if (estados[i] == 'Pernambuco') {
+                                    sigla = 'PE';
+                                }
+                                if (estados[i] == 'Piauí') {
+                                    sigla = 'PI';
+                                }
+                                if (estados[i] == 'Paraná') {
+                                    sigla = 'PR';
+                                }
+                                if (estados[i] == 'Rio de Janeiro') {
+                                    sigla = 'RJ';
+                                }
+                                if (estados[i] == 'Rio Grande do Norte') {
+                                    sigla = 'RN';
+                                }
+                                if (estados[i] == 'Rondônia') {
+                                    sigla = 'RO';
+                                }
+                                if (estados[i] == 'Roraima') {
+                                    sigla = 'RR';
+                                }
+                                if (estados[i] == 'Rio Grande do Sul') {
+                                    sigla = 'RS';
+                                }
+                                if (estados[i] == 'Santa Catarina') {
+                                    sigla = 'SC';
+                                }
+                                if (estados[i] == 'São Paulo') {
+                                    sigla = 'SP';
+                                }
+                                if (estados[i] == 'Sergipe') {
+                                    sigla = 'SE';
+                                }
+                                if (estados[i] == 'Tocantins') {
+                                    sigla = 'TO';
+                                }
+                                res[1] = sigla;
                             }
-                            if (estados[i] == 'Alagoas') {
-                                sigla = 'AL';
-                            }
-                            if (estados[i] == 'Amazonas') {
-                                sigla = 'AM';
-                            }
-                            if (estados[i] == 'Amapá') {
-                                sigla = 'AP';
-                            }
-                            if (estados[i] == 'Bahia') {
-                                sigla = 'BA';
-                            }
-                            if (estados[i] == 'Ceará') {
-                                sigla = 'CE';
-                            }
-                            if (estados[i] == 'Distrito Federal') {
-                                sigla = 'DF';
-                            }
-                            if (estados[i] == 'Espírito Santo') {
-                                sigla = 'ES';
-                            }
-                            if (estados[i] == 'Goiás') {
-                                sigla = 'GO';
-                            }
-                            if (estados[i] == 'Maranhão') {
-                                sigla = 'MA';
-                            }
-                            if (estados[i] == 'Minas Gerais') {
-                                sigla = 'MG';
-                            }
-                            if (estados[i] == 'Mato Grosso do Sul') {
-                                sigla = 'MS';
-                            }
-                            if (estados[i] == 'Mato Grosso') {
-                                sigla = 'MT';
-                            }
-                            if (estados[i] == 'Pará') {
-                                sigla = 'PA';
-                            }
-                            if (estados[i] == 'Paraíba') {
-                                sigla = 'PB';
-                            }
-                            if (estados[i] == 'Pernambuco') {
-                                sigla = 'PE';
-                            }
-                            if (estados[i] == 'Piauí') {
-                                sigla = 'PI';
-                            }
-                            if (estados[i] == 'Paraná') {
-                                sigla = 'PR';
-                            }
-                            if (estados[i] == 'Rio de Janeiro') {
-                                sigla = 'RJ';
-                            }
-                            if (estados[i] == 'Rio Grande do Norte') {
-                                sigla = 'RN';
-                            }
-                            if (estados[i] == 'Rondônia') {
-                                sigla = 'RO';
-                            }
-                            if (estados[i] == 'Roraima') {
-                                sigla = 'RR';
-                            }
-                            if (estados[i] == 'Rio Grande do Sul') {
-                                sigla = 'RS';
-                            }
-                            if (estados[i] == 'Santa Catarina') {
-                                sigla = 'SC';
-                            }
-                            if (estados[i] == 'São Paulo') {
-                                sigla = 'SP';
-                            }
-                            if (estados[i] == 'Sergipe') {
-                                sigla = 'SE';
-                            }
-                            if (estados[i] == 'Tocantins') {
-                                sigla = 'TO';
-                            }
-                            res = sigla;
                         }
                     }
-                    }
-                    if ((resp.toLowerCase().indexOf(estados[i].toLowerCase()) == 0)) {
-                        next = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 3);
+                    if ((resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) == 0)) {
+                        next = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + 2, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + 3);
 
                         if (estados[i].length == 2) {
-                            if (next == ' '|| next == '') {
-                                res = estados[i];
+                            if (next == ' ' || next == '') {
+                                res[1] = estados[i];
 
                             }
                         } else {
-                            next = resp.substring(resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 2, resp.toLowerCase().indexOf(estados[i].toLowerCase()) + 3);
+                            next = resp.substring(resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + estados[i].length, resp.toLowerCase().indexOf(removeAcento(estados[i].toLowerCase())) + +estados[i].length + 1);
 
-                        if (next == ' '|| next == '') {
-                            sigla = '';
-                            if (estados[i] == 'Acre') {
-                                sigla = 'AC';
+                            if (next == ' ' || next == '') {
+                                sigla = '';
+                                if (estados[i] == 'Acre') {
+                                    sigla = 'AC';
+                                }
+                                if (estados[i] == 'Alagoas') {
+                                    sigla = 'AL';
+                                }
+                                if (estados[i] == 'Amazonas') {
+                                    sigla = 'AM';
+                                }
+                                if (estados[i] == 'Amapá') {
+                                    sigla = 'AP';
+                                }
+                                if (estados[i] == 'Bahia') {
+                                    sigla = 'BA';
+                                }
+                                if (estados[i] == 'Ceará') {
+                                    sigla = 'CE';
+                                }
+                                if (estados[i] == 'Distrito Federal') {
+                                    sigla = 'DF';
+                                }
+                                if (estados[i] == 'Espírito Santo') {
+                                    sigla = 'ES';
+                                }
+                                if (estados[i] == 'Goiás') {
+                                    sigla = 'GO';
+                                }
+                                if (estados[i] == 'Maranhão') {
+                                    sigla = 'MA';
+                                }
+                                if (estados[i] == 'Minas Gerais') {
+                                    sigla = 'MG';
+                                }
+                                if (estados[i] == 'Mato Grosso do Sul') {
+                                    sigla = 'MS';
+                                }
+                                if (estados[i] == 'Mato Grosso') {
+                                    sigla = 'MT';
+                                }
+                                if (estados[i] == 'Pará') {
+                                    sigla = 'PA';
+                                }
+                                if (estados[i] == 'Paraíba') {
+                                    sigla = 'PB';
+                                }
+                                if (estados[i] == 'Pernambuco') {
+                                    sigla = 'PE';
+                                }
+                                if (estados[i] == 'Piauí') {
+                                    sigla = 'PI';
+                                }
+                                if (estados[i] == 'Paraná') {
+                                    sigla = 'PR';
+                                }
+                                if (estados[i] == 'Rio de Janeiro') {
+                                    sigla = 'RJ';
+                                }
+                                if (estados[i] == 'Rio Grande do Norte') {
+                                    sigla = 'RN';
+                                }
+                                if (estados[i] == 'Rondônia') {
+                                    sigla = 'RO';
+                                }
+                                if (estados[i] == 'Roraima') {
+                                    sigla = 'RR';
+                                }
+                                if (estados[i] == 'Rio Grande do Sul') {
+                                    sigla = 'RS';
+                                }
+                                if (estados[i] == 'Santa Catarina') {
+                                    sigla = 'SC';
+                                }
+                                if (estados[i] == 'São Paulo') {
+                                    sigla = 'SP';
+                                }
+                                if (estados[i] == 'Sergipe') {
+                                    sigla = 'SE';
+                                }
+                                if (estados[i] == 'Tocantins') {
+                                    sigla = 'TO';
+                                }
+                                res[1] = sigla;
                             }
-                            if (estados[i] == 'Alagoas') {
-                                sigla = 'AL';
-                            }
-                            if (estados[i] == 'Amazonas') {
-                                sigla = 'AM';
-                            }
-                            if (estados[i] == 'Amapá') {
-                                sigla = 'AP';
-                            }
-                            if (estados[i] == 'Bahia') {
-                                sigla = 'BA';
-                            }
-                            if (estados[i] == 'Ceará') {
-                                sigla = 'CE';
-                            }
-                            if (estados[i] == 'Distrito Federal') {
-                                sigla = 'DF';
-                            }
-                            if (estados[i] == 'Espírito Santo') {
-                                sigla = 'ES';
-                            }
-                            if (estados[i] == 'Goiás') {
-                                sigla = 'GO';
-                            }
-                            if (estados[i] == 'Maranhão') {
-                                sigla = 'MA';
-                            }
-                            if (estados[i] == 'Minas Gerais') {
-                                sigla = 'MG';
-                            }
-                            if (estados[i] == 'Mato Grosso do Sul') {
-                                sigla = 'MS';
-                            }
-                            if (estados[i] == 'Mato Grosso') {
-                                sigla = 'MT';
-                            }
-                            if (estados[i] == 'Pará') {
-                                sigla = 'PA';
-                            }
-                            if (estados[i] == 'Paraíba') {
-                                sigla = 'PB';
-                            }
-                            if (estados[i] == 'Pernambuco') {
-                                sigla = 'PE';
-                            }
-                            if (estados[i] == 'Piauí') {
-                                sigla = 'PI';
-                            }
-                            if (estados[i] == 'Paraná') {
-                                sigla = 'PR';
-                            }
-                            if (estados[i] == 'Rio de Janeiro') {
-                                sigla = 'RJ';
-                            }
-                            if (estados[i] == 'Rio Grande do Norte') {
-                                sigla = 'RN';
-                            }
-                            if (estados[i] == 'Rondônia') {
-                                sigla = 'RO';
-                            }
-                            if (estados[i] == 'Roraima') {
-                                sigla = 'RR';
-                            }
-                            if (estados[i] == 'Rio Grande do Sul') {
-                                sigla = 'RS';
-                            }
-                            if (estados[i] == 'Santa Catarina') {
-                                sigla = 'SC';
-                            }
-                            if (estados[i] == 'São Paulo') {
-                                sigla = 'SP';
-                            }
-                            if (estados[i] == 'Sergipe') {
-                                sigla = 'SE';
-                            }
-                            if (estados[i] == 'Tocantins') {
-                                sigla = 'TO';
-                            }
-
-
-                            res = sigla;
                         }
-                    }
                     }
                 }
             }
         }
-        if (res == '') {
+        if (res[0] == ''&&res[1] == ''&&res[2] == '') {
             return 0;
         } else {
-            return res;//Return value will be saved as "Return value variable" field name
+            return res;
         }
     }
 }

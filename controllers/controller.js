@@ -36,7 +36,8 @@ exports.getEstado = async(req, res) => {
 }
 
 exports.getCidade = async(req, res) => {
-    const cidade = await regex.estadoFunction(`${req.body.local}`)
+    const local = await regex.estadoFunction(`${req.body.local}`)
+    const cidade = local[0]
     const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}`
     axios.get(urlCidade).then((response) => {
         res.status(response.status).send(response.data.results[0])
