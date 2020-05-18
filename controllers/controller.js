@@ -5,7 +5,7 @@ var converterJson = require('./converterJson')
 const request = require('request')
 
 exports.getScript = async(req, res) => {
-    const local = await regex.estadoFunction(`${req.body.local}`)
+    const local = await regex.localFunction(`${req.body.local}`)
     if(local == 0)
         res.send("outro país")
     else
@@ -45,7 +45,17 @@ exports.getUf = async(req, res) => {
 }
 
 exports.getCidade = async(req, res) => {
-    const cidade = await regex.estadoFunction(`${req.body.local}`)
+    const cidade = await regex.localFunction(`${req.body.local}`)
+    const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}`
+    axios.get(urlCidade).then((response) => {
+        res.status(response.status).send(response.data.results[0])
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+exports.getCidadeRepetida = async(req, res) => {
+    const cidade = await cidadeRepetida.cidadeRepetidaFunction(`${req.body.local}`)
     const uf = `${req.body.uf}`
     const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}&state=${uf}`
     axios.get(urlCidade).then((response) => {

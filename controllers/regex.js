@@ -1,5 +1,5 @@
 module.exports = {
-    estadoFunction: async function(str) {
+    localFunction: async function(str) {
         removeAcento = (text) => {
             text = text.toLowerCase();
             text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
