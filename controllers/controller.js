@@ -1,6 +1,7 @@
 const axios = require('axios')
 var regex = require('./regex')
 var uf = require('./uf')
+var cidadeRepetida = require('./cidadeRepetida')
 var converterJson = require('./converterJson')
 const request = require('request')
 
@@ -44,9 +45,17 @@ exports.getUf = async(req, res) => {
         res.send(estado)
 }
 
+exports.getVerificaCidade = async(req, res) => {
+    const verificaCidade = await cidadeRepetida.cidadeRepetidaFunction(`${req.body.cidade}`)
+    if(verificaCidade == "0")
+        res.send("0")
+    else
+        res.send("1")
+}
+
 exports.getCidade = async(req, res) => {
     const cidade = await regex.localFunction(`${req.body.local}`)
-    const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}`
+    const urlCidade = `https://brasil.io/api/dataset/covid19/caso_full/data/?city=${cidade}`
     axios.get(urlCidade).then((response) => {
         res.status(response.status).send(response.data.results[0])
     }).catch((error) => {
@@ -55,9 +64,9 @@ exports.getCidade = async(req, res) => {
 }
 
 exports.getCidadeRepetida = async(req, res) => {
-    const cidade = await cidadeRepetida.cidadeRepetidaFunction(`${req.body.local}`)
+    const cidade = await regex.localFunction(`${req.body.local}`)
     const uf = `${req.body.uf}`
-    const urlCidade = `https://brasil.io/api/dataset/covid19/caso/data/?city=${cidade}&state=${uf}`
+    const urlCidade = `https://brasil.io/api/dataset/covid19/caso_full/data/?city=${cidade}&state=${uf}`
     axios.get(urlCidade).then((response) => {
         res.status(response.status).send(response.data.results[0])
     }).catch((error) => {

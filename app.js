@@ -10,5 +10,5 @@ app.use(express.json())
 app.use("/", router)
 
 app.listen(PORT, () => {
-  console.log("The server is now running on Port PORT")
+  console.log("The server is now running")
 })
