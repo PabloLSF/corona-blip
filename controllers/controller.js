@@ -16,13 +16,12 @@ exports.getScript = async(req, res) => {
 exports.renderBrasil = async(req, res) => {
     var options = {
         'method': 'GET',
-        'url': 'https://corona-virus-stats.herokuapp.com/api/v1/cases/countries-search',
+        'url': 'https://covid-19.dataflowkit.com/v1/brazil',
         'headers': { },
         "json": true
     }
     request(options, async(error, response) => {
-        let payload = response.body.data.rows
-        let pais = await converterJson.convert(payload)
+        let pais = response.body.data.rows
         res.status(response.statusCode).send(pais)
     })
 }
