@@ -2,7 +2,6 @@ const axios = require('axios')
 var regex = require('./regex')
 var uf = require('./uf')
 var cidadeRepetida = require('./cidadeRepetida')
-var converterJson = require('./converterJson')
 const request = require('request')
 
 exports.getScript = async(req, res) => {
@@ -16,19 +15,20 @@ exports.getScript = async(req, res) => {
 exports.renderBrasil = async(req, res) => {
     var options = {
         'method': 'GET',
-        'url': 'https://covid-19.dataflowkit.com/v1/brazil',
+        'url': 'https://corona.lmao.ninja/v2/countries/brazil',
         'headers': { },
         "json": true
     }
     request(options, async(error, response) => {
-        let pais = response.body.data.rows
+        //let pais = response.body.data.rows
+        let pais = response.body
         res.status(response.statusCode).send(pais)
     })
 }
 
 exports.getEstado = async(req, res) => {
     const estado = `${req.body.local}`
-    const urlEstado = `https://brasil.io/api/dataset/covid19/obito_cartorio/data/?state=${estado}`
+    const urlEstado = `https://brasil.io/api/dataset/covid19/caso_full/data/?is_last=true&place_type=state&state=${estado}`
     axios.get(urlEstado).then((response) => {
         res.status(response.status).send(response.data.results[0])
     }).catch((error) => {
