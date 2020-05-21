@@ -60,7 +60,34 @@ module.exports = {
             ];
 
         
-    
+       for (var i = 0; i < cidades.length; i++) {
+            if (resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) != -1) {
+            
+                int = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())));
+                next = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 1);
+            var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
+                if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
+                    if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
+                        
+                    }else{
+                    
+                    aux[j] = cidades[i];
+                    j++;
+                    }
+                }
+            }
+        }
+        if(j==1){
+            res=aux[0];
+        }
+            for(var i = 1; i<j;i++){
+                if(aux[i-1].length<aux[i].length){
+                    res=aux[i];
+ 
+                }else{
+                    res=aux[i-1]; 
+                }
+            }
         
 
         for (var i = 0; i < pais.length; i++) {
@@ -311,34 +338,7 @@ module.exports = {
                 }
             }
         }
-        for (var i = 0; i < cidades.length; i++) {
-            if (resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) != -1) {
-            
-                int = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) - 1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())));
-                next = resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 1);
-            var sufx= resp.substring(resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length+1, resp.toLowerCase().indexOf(removeAcento(cidades[i].toLowerCase())) + +cidades[i].length + 9);
-                if ((int == ' ' && (next == ' ' || next == '')) || (int == '' && (next == ' ' || next == ''))) {
-                    if(sufx.indexOf('do sul')!=-1||sufx.indexOf('do norte')!=-1){
-                        
-                    }else{
-                    
-                    aux[j] = cidades[i];
-                    j++;
-                    }
-                }
-            }
-        }
-        if(j==1){
-            res=aux[0];
-        }
-            for(var i = 1; i<j;i++){
-                if(aux[i-1].length<aux[i].length){
-                    res=aux[i];
-                    console.log(res) 
-                }else{
-                    res=aux[i-1]; 
-                }
-            }
+     
         if (res == '') {
             return 0;
         } else {
